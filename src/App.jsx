@@ -2,6 +2,7 @@ import { Box, Container } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import KeywordsModal from "./components/KeywordsModal";
 import TextInput from "./components/TextInput";
 
 const App = () => {
@@ -43,6 +44,8 @@ const App = () => {
     setLoading(false);
   };
 
+  const closeModal = () => setIsOpen(false);
+
   return (
     <Box bg='blue.600' color='white' height={"100vh"} paddingTop={130}>
       <Container maxW={"3xl"} centerContent>
@@ -50,6 +53,13 @@ const App = () => {
         <TextInput extractKeywords={extractKeywords} />
         <Footer />
       </Container>
+
+      <KeywordsModal
+        closeModal={closeModal}
+        isOpen={isOpen}
+        keywords={keywords}
+        loading={loading}
+      />
     </Box>
   );
 };
